@@ -1,2 +1,6 @@
-# AA_Challenge_25-26_Steiner-tree
-Analysis and solutions for the Steiner tree problem. For AA Challenge 2025–2026 @ UPB RO — ACS year II (324CC)
+# AA Challenge 2025-2026
+
+## Authors
+Ciuca Lucas & Tanasa Cosmin-Andrei (324 CC, ACS year II)
+
+Analysis and solutions for the Steiner tree problem.
