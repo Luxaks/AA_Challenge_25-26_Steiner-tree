@@ -1,46 +1,33 @@
-# G = [
-#     [0, 2, 3, 6, 0, 0, 0, 0, 0, 0],
-#     [2, 0, 1, 0, 4, 0, 0, 0, 0, 0],
-#     [3, 1, 0, 5, 0, 2, 0, 0, 0, 0],
-#     [6, 0, 5, 0, 0, 0, 3, 0, 0, 0],
-#     [0, 4, 0, 0, 0, 7, 0, 2, 0, 0],
-#     [0, 0, 2, 0, 7, 0, 0, 0, 4, 0],
-#     [0, 0, 0, 3, 0, 0, 0, 0, 1, 5],
-#     [0, 0, 0, 0, 2, 0, 0, 0, 6, 0],
-#     [0, 0, 0, 0, 0, 4, 1, 6, 0, 3],
-#     [0, 0, 0, 0, 0, 0, 5, 0, 3, 0]
-# ]
+G = [
+    [0, 2, 3, 6, 0, 0, 0, 0, 0, 0],
+    [2, 0, 1, 0, 4, 0, 0, 0, 0, 0],
+    [3, 1, 0, 5, 0, 2, 0, 0, 0, 0],
+    [6, 0, 5, 0, 0, 0, 3, 0, 0, 0],
+    [0, 4, 0, 0, 0, 7, 0, 2, 0, 0],
+    [0, 0, 2, 0, 7, 0, 0, 0, 4, 0],
+    [0, 0, 0, 3, 0, 0, 0, 0, 1, 5],
+    [0, 0, 0, 0, 2, 0, 0, 0, 6, 0],
+    [0, 0, 0, 0, 0, 4, 1, 6, 0, 3],
+    [0, 0, 0, 0, 0, 0, 5, 0, 3, 0]
+]
 
-# T = [0, 4, 6, 9]
+T = [0, 4, 6, 9]
+
+N = 10
 
 from itertools import combinations
 from collections import defaultdict, deque
 import sys
-
-graph = {
-    'A': {'B': 2, 'C': 3, 'D': 6},
-    'B': {'A': 2, 'C': 1, 'E': 4},
-    'C': {'A': 3, 'B': 1, 'D': 5, 'F': 2},
-    'D': {'A': 6, 'C': 5, 'G': 3},
-    'E': {'B': 4, 'F': 7, 'H': 2},
-    'F': {'C': 2, 'E': 7, 'I': 4},
-    'G': {'D': 3, 'I': 1, 'J': 5},
-    'H': {'E': 2, 'I': 6},
-    'I': {'F': 4, 'G': 1, 'H': 6, 'J': 3},
-    'J': {'G': 5, 'I': 3},
-}
-
-terminals = {'A', 'E', 'G', 'J'}
+import time
 
 def all_edges(g):
     """Return a list of edges (u, v, w) with u < v to avoid duplicates."""
-    seen = set()
     edges = []
-    for u, pairs in g.items():
-        for v, w in pairs.items():
-            if (v,u) not in seen:
+    for u in range(0, N):
+        for v in range(u + 1, N):
+            w = G[u][v]
+            if w != 0:
                 edges.append((u,v,w))
-                seen.add((u,v))
     return edges
 
 def connected(sub_edges, required):
@@ -60,7 +47,7 @@ def connected(sub_edges, required):
             if nb not in visited:
                 q.append(nb)
 
-    return required.issubset(visited)
+    return set(required).issubset(visited)
 
 def backtrack(idx, chosen, cur_weight):
     """Recursive backtracking over the edge list."""
@@ -70,7 +57,7 @@ def backtrack(idx, chosen, cur_weight):
         return
 
     if idx == len(edges):
-        if connected(chosen, terminals):
+        if connected(chosen, T):
             best_weight = cur_weight
             best_solution = list(chosen)
         return
@@ -88,14 +75,20 @@ def backtrack(idx, chosen, cur_weight):
 best_weight = sys.maxsize
 best_solution = None
 
-edges = all_edges(graph)
+start = time.time()
+edges = all_edges(G)
+# print(edges)
+end_pre = (time.time() - start) * 1000
 
+start = time.time()
 backtrack(0, [], 0)
+end_bt = (time.time() - start) * 1000
 
 if best_solution is None:
     print("No Steiner tree found.")
 else:
     print(f"Minimum weight: {best_weight}")
-    print("Edges in the Steiner tree:")
     for u, v, w in best_solution:
         print(f"  {u} - {v} (weight {w})")
+print("Time elapsed (PREP): %.4f ms" % end_pre)
+print("Time elapsed (BT): %.4f ms" % end_bt)
