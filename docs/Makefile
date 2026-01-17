@@ -1,5 +1,12 @@
-all: master.typ
-	typst compile $< AA_Challenge_25-26_Steiner-tree.pdf
+TYP = typst compile
+SRC = master.typ
+PDF = AA_Challenge_2025-2026_Steiner-tree.pdf
+
+.PHONY: all clean
+$(VERBOSE).SILENT:
+
+all: $(SRC)
+	$(TYP) $< $(PDF)
 
 clean:
-	rm AA_Challenge_25-26_Steiner-tree.pdf
+	if [ -e $(PDF) ]; then rm $(PDF); fi

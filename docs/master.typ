@@ -1,6 +1,8 @@
 // Base for AA Challenge documentation
 // This document respects the LNCS format guidelines.
 
+#set text(10pt)
+
 // Main Title
 #pad(bottom: 1em, align(center, text(14pt)[
     *AA Challenge 2025--2026* \
@@ -8,14 +10,12 @@
 ]))
 
 // Authors
-#align(center, text(10pt)[
-    Ciucă Lucas#super[1,2], Tănasă Cosmin-Andrei#super[1] \
+#align(center, text[
+    Ciucă Lucas#super[1], Tănasă Cosmin-Andrei#super[1] \
     \
     #super[1] Facultatea de Automatică și Calculatoare \
-    Universitatea Politehnica din București, România
-])
-#align(center, text(size: 7pt, font: "DejaVu Sans Mono")[
-    #super[2] lucasciuca\@gmail.com
+    Universitatea Politehnica din București, România \
+    Grupa 324, Seria CC
 ])
 
 // Header
@@ -34,4 +34,11 @@
     }
 })
 
-#lorem(1000)
+= Buna cf.
+intro aici
+
+= Demonstrație NP-hard.
+#include "nph.typ"
+
+= Bibliografie.
+#include "credits.typ"
