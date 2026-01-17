@@ -185,6 +185,7 @@ if __name__ == "__main__":
     print("Timp executie (fara IO):", end - start, "secunde")
 
     print("Numar noduri:", n)
+    print("Numar terminale:" len(terminals))
     print("Terminale:", terminals)
     print("Cost minim Steiner:", cost)
     print("Numar muchii arbore:", len(edges))
