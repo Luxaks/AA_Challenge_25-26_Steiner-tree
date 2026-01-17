@@ -7,8 +7,8 @@ In order to compile and read the PDF file, run `make` here.
 To remove the file, run `make clean`.
 
 ### TODO
-* intro / definitions
-* NP-hard (done!)
+* intro / ~definitions~ (partial)
+* ~NP-hard~ (done!)
 * algorithms & complexity
   * base BT algo
   * greedy Dijkstra algo (in progress)
