@@ -1,4 +1,7 @@
-  File "/home/cosmin-s/Desktop/AA_Challenge_25-26_Steiner-tree/src/DP_Fuchs.py", line 188
-    print("Numar terminale:" len(terminals))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Matricea a fost scrisa in fisierul: output_200_6.txt
+Timp executie (fara IO): 0.01425162600207841 secunde
+Numar noduri: 200
+Numar terminale: 6
+Terminale: [10, 44, 78, 123, 167, 199]
+Cost minim Steiner: 48
+Numar muchii arbore: 12
