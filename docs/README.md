@@ -8,7 +8,10 @@ To remove the file, run `make clean`.
 
 ### TODO
 * intro / definitions
-* NP-hard (in progress)
+* NP-hard (done!)
 * algorithms & complexity
+  * base BT algo
+  * greedy Dijkstra algo (in progress)
+  * DP Dijkstra algo (in progress)
 * testing
 * graphs/tables
