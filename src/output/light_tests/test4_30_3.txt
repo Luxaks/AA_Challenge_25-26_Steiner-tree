@@ -1,0 +1,7 @@
+Matricea a fost scrisa in fisierul: output_30_3.txt
+Timp executie (fara IO): 0.0002129340027750004 secunde
+Numar noduri: 30
+Numar terminale: 3
+Terminale: [3, 12, 25]
+Cost minim Steiner: 8
+Numar muchii arbore: 5

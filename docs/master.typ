@@ -34,11 +34,20 @@
     }
 })
 
-= Buna cf.
-intro aici
+= Introducere
+#include "intro.typ"
 
 = Demonstrație NP-hard.
 #include "nph.typ"
+
+= Prezentare algoritmi
+#include "algos.typ"
+
+= Evaluare
+#include "eval.typ"
+
+= Concluzii
+#include "conclusion.typ"
 
 = Bibliografie.
 #include "credits.typ"

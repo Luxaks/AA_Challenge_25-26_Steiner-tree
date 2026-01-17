@@ -1,0 +1,7 @@
+Matricea a fost scrisa in fisierul: output_50_5.txt
+Timp executie (fara IO): 0.001809296001738403 secunde
+Numar noduri: 50
+Numar terminale: 5
+Terminale: [0, 10, 20, 30, 49]
+Cost minim Steiner: 22
+Numar muchii arbore: 9

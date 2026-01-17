@@ -1,0 +1,7 @@
+Matricea a fost scrisa in fisierul: output_250_7.txt
+Timp executie (fara IO): 0.03806708300180617 secunde
+Numar noduri: 250
+Numar terminale: 7
+Terminale: [0, 33, 66, 99, 132, 198, 249]
+Cost minim Steiner: 44
+Numar muchii arbore: 16

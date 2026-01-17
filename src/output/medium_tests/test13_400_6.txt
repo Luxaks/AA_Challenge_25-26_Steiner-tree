@@ -1,0 +1,7 @@
+Matricea a fost scrisa in fisierul: output_400_6.txt
+Timp executie (fara IO): 0.031061423000210198 secunde
+Numar noduri: 400
+Numar terminale: 6
+Terminale: [1, 79, 158, 237, 316, 399]
+Cost minim Steiner: 36
+Numar muchii arbore: 17

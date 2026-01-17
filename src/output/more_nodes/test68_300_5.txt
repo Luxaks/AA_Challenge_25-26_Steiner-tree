@@ -1,0 +1,7 @@
+Matricea a fost scrisa in fisierul: output_300_5.txt
+Timp executie (fara IO): 0.010155931002373109 secunde
+Numar noduri: 300
+Numar terminale: 5
+Terminale: [0, 60, 12, 180, 290]
+Cost minim Steiner: 37
+Numar muchii arbore: 18

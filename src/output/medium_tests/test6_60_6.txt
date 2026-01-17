@@ -1,0 +1,7 @@
+Matricea a fost scrisa in fisierul: output_60_6.txt
+Timp executie (fara IO): 0.004418789998453576 secunde
+Numar noduri: 60
+Numar terminale: 6
+Terminale: [2, 7, 15, 28, 41, 59]
+Cost minim Steiner: 28
+Numar muchii arbore: 12

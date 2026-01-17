@@ -1,0 +1,7 @@
+Matricea a fost scrisa in fisierul: output_18_3.txt
+Timp executie (fara IO): 0.00020351499915705062 secunde
+Numar noduri: 18
+Numar terminale: 3
+Terminale: [0, 9, 17]
+Cost minim Steiner: 4
+Numar muchii arbore: 2
