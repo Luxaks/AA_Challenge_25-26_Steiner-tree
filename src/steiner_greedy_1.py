@@ -141,16 +141,23 @@ def greedy():
 
 # ==================================================
 
-# PREPARE: set null solution, set minimum to be greater than all possible values
+# ENTRY: check args
+if len(sys.argv) != 2:
+    print("Usage: python3 greedy <filename>")
+    exit(1)
+fname = sys.argv[1]
+
+# PREPARE: set null solution (zero weight, empty tree)
 best_weight = 0
 sol_nodes = set()
 sol_edges = set()
 
 # BEGIN: read data
-N, G, T = read_graph(open("example_2.in", "r"))
-print(N)
-print(G)
-print(T)
+try:
+    N, G, T = read_graph(open(fname, "r"))
+except FileNotFoundError:
+    print(f"'{fname}' is not a valid file!")
+    exit(2)
 
 # SOLVE: find Steiner tree and calculate time taken in milliseconds
 start = time.time()

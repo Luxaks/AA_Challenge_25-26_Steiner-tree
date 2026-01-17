@@ -81,12 +81,23 @@ def backtrack(idx, chosen, cur_weight):
 
 # ==================================================
 
-# PREPARE: set null solution, set minimum to be greater than all possible values
+# ENTRY: check args
+if len(sys.argv) != 2:
+    print("Usage: python3 greedy <filename>")
+    exit(1)
+fname = sys.argv[1]
+
+# PREPARE: init minimum, set null solution
 best_weight = sys.maxsize
 best_solution = None
 
 # BEGIN: read data
-N, G, T = read_graph(open("example_2.in", "r"))
+try:
+    N, G, T = read_graph(open(fname, "r"))
+except FileNotFoundError:
+    print(f"'{fname}' is not a valid file!")
+    exit(2)
+
 
 # SOLVE: find Steiner tree and calculate time taken in milliseconds
 start = time.time()
