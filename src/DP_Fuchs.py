@@ -134,6 +134,34 @@ def generate_random_connected_graph(n):
 
     return graph
 
+#======================== PRINTARE GRAF GENERAT ====================
+def write_graph_matrix_to_file(n, graph, terminals):
+    filename = f"output_{n}_{len(terminals)}.txt"
+
+    matrix = [[INF] * n for _ in range(n)]
+
+    for i in range(n):
+        matrix[i][i] = 0
+
+    for u in graph:
+        for v, w in graph[u]:
+            matrix[u][v] = min(matrix[u][v], w)
+
+    with open(filename, "w") as f:
+        f.write(f"Matricea de adiacenta ({n} x {n})\n")
+        f.write(f"Terminale: {terminals}\n\n")
+
+        for i in range(n):
+            for j in range(n):
+                if matrix[i][j] == INF:
+                    f.write("INF ")
+                else:
+                    f.write(f"{matrix[i][j]} ")
+            f.write("\n")
+
+    print(f"Matricea a fost scrisa in fisierul: {filename}")
+
+
 
 # ================== INPUT + MAIN ==================
 def read_input():
@@ -145,6 +173,8 @@ def read_input():
 if __name__ == "__main__":
     n, terminals = read_input()
     graph = generate_random_connected_graph(n)
+
+    write_graph_matrix_to_file(n, graph, terminals)
 
     start = time.perf_counter()
 
