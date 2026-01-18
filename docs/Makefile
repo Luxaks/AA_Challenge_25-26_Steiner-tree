@@ -9,4 +9,4 @@ all: $(SRC)
 	$(TYP) $< $(PDF)
 
 clean:
-	if [ -e $(PDF) ]; then rm $(PDF); fi
+	rm $(PDF) 2>/dev/null || echo "Nothing to clean."
