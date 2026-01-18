@@ -142,10 +142,13 @@ def greedy():
 # ==================================================
 
 # ENTRY: check args
-if len(sys.argv) != 2:
-    print("Usage: python3 greedy <filename>")
+if len(sys.argv) != 3:
+    print("Usage:\n\tpython3 greedy [-t | <input_filename>] <output_filename>\n\nFlag:\n\t-t\tRead data from terminal")
     exit(1)
-fname = sys.argv[1]
+ifname = sys.argv[1]
+ofname = sys.argv[2]
+if ifname == "-t":
+    ifname = sys.stdin.fileno()
 
 # PREPARE: set null solution (zero weight, empty tree)
 best_weight = 0
@@ -154,9 +157,9 @@ sol_edges = set()
 
 # BEGIN: read data
 try:
-    N, G, T = read_graph(open(fname, "r"))
+    N, G, T = read_graph(open(ifname, "r"))
 except FileNotFoundError:
-    print(f"'{fname}' is not a valid file!")
+    print(f"'{ifname}' is not a valid file!")
     exit(2)
 
 # SOLVE: find Steiner tree and calculate time taken in milliseconds
@@ -169,7 +172,10 @@ end = (time.time() - start) * 1000
 if sol_nodes is None:
     print("No Steiner tree found.")
 else:
-    open("example.out", "w").write(f"{best_weight}")
+    try:
+        open(ofname, "w").write(f"{best_weight}")
+    except FileNotFoundError:
+        print(f"'{ofname}' is not a valid file!")
     print(f"Minimum weight: {best_weight}")
     for u, v, w in sol_edges:
         print(f"  {u} - {v} (weight {w})")
