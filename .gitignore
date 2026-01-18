@@ -1,3 +1,7 @@
 .vscode/*
+
+src/*.in
 src/*.out
+
+tests/*.py
 tests/output/*

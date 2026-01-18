@@ -1,12 +1,15 @@
+# DP approximation of Steiner tree, replacing BT with a Dijkstra-based
+# algorithm via the Fuchs improved Dreyer-Wagner method (1971, 2006).
+
 import heapq
 import random
 import time
+import sys
 from collections import defaultdict
 
-INF = 10**18
+INF = float('inf')
 
-
-# ================== DIJKSTRA ==================
+#==================== DIJKSTRA ====================
 def dijkstra(n, graph, src):
     dist = [INF] * n
     parent = [-1] * n
@@ -17,17 +20,19 @@ def dijkstra(n, graph, src):
         d, u = heapq.heappop(pq)
         if d != dist[u]:
             continue
-        for v, w in graph[u]:
-            nd = d + w
-            if nd < dist[v]:
-                dist[v] = nd
-                parent[v] = u
-                heapq.heappush(pq, (nd, v))
+        for P in graph:
+            if u in (P[0], P[1]):
+                v = P[1] if P[0] == u else P[0]
+                w = P[2]
+                nd = d + w
+                if nd < dist[v]:
+                    dist[v] = nd
+                    parent[v] = u
+                    heapq.heappush(pq, (nd, v))
 
     return dist, parent
 
-
-# ================== STEINER TREE ==================
+#================== STEINER TREE ==================
 def steiner_tree(n, graph, terminals):
     k = len(terminals)
     FULL = 1 << k
@@ -70,12 +75,15 @@ def steiner_tree(n, graph, terminals):
             d, u = heapq.heappop(pq)
             if d != dist[u]:
                 continue
-            for v, w in graph[u]:
-                nd = d + w
-                if nd < dist[v]:
-                    dist[v] = nd
-                    trace[(mask, v)] = ('move', u)
-                    heapq.heappush(pq, (nd, v))
+            for P in graph:
+                if u in (P[0], P[1]):
+                    v = P[1] if P[0] == u else P[0]
+                    w = P[2]
+                    nd = d + w
+                    if nd < dist[v]:
+                        dist[v] = nd
+                        trace[(mask, v)] = ('move', u)
+                        heapq.heappush(pq, (nd, v))
 
         dp[mask] = dist
 
@@ -97,95 +105,93 @@ def steiner_tree(n, graph, terminals):
             cur = v
             while parent_term[i][cur] != -1:
                 p = parent_term[i][cur]
-                edges.add(tuple(sorted((p, cur))))
+                if p > cur:
+                    edges.add((cur, p))
+                else:
+                    edges.add((p, cur))
                 cur = p
         elif t[0] == 'merge':
             build(t[1], v)
             build(mask ^ t[1], v)
         elif t[0] == 'move':
             u = t[1]
-            edges.add(tuple(sorted((u, v))))
+            if u > v:
+                edges.add((v, u))
+            else:
+                edges.add((u, v))
             build(mask, u)
 
     build(full, end)
     return cost, edges
 
+#====================== INPUT =====================
+def read_graph(file):
+    G = []
+    T = []
 
-# ================== GENERARE GRAF RANDOM CONEX ==================
-def generate_random_connected_graph(n):
-    graph = defaultdict(list)
+    # first line contains number of vertices, number of edges, number of terminals
+    first = file.readline().strip()
+    if not first:
+        raise ValueError("no first line")
+    N, M, Tn = map(int, first.split())
 
-    def add_edge(u, v):
-        w = random.randint(1, 8)
-        graph[u].append((v, w))
-        graph[v].append((u, w))
+    # second line contains terminal nodes
+    second = file.readline().strip()
+    if not second and Tn > 0:
+        raise ValueError("no second line")
+    T = list(map(int, second.split()))
+    if len(T) != Tn:
+        raise ValueError("not enough terminal nodes")
 
-    # Lant de baza (asigura conectivitate)
-    for i in range(n - 1):
-        add_edge(i, i + 1)
+    # following lines contain edges in the format Start End Weight    
+    for _ in range(M):
+        line = file.readline().strip()
+        if not line:
+            raise ValueError("not enough data lines")
+        u, v, w = map(int, line.split())
+        if u > v: u, v = v, u
+        G.append((u,v,w))
+    
+    return N, G, T
 
-    # Muchii suplimentare random
-    extra_edges = n * 2
-    for _ in range(extra_edges):
-        u = random.randint(0, n - 1)
-        v = random.randint(0, n - 1)
-        if u != v:
-            add_edge(u, v)
+#====================== MAIN ======================
 
-    return graph
+# ENTRY: check args
+if len(sys.argv) != 3:
+    print("\033[93mUsage:\n\tpython3 fuchs.py [-t | <input_filename>] <output_filename>")
+    print("\nFlag:\n\t-t\tRead data from terminal\033[0m")
+    exit(1)
+ifname = sys.argv[1]
+ofname = sys.argv[2]
+if ifname == "-t":
+    ifname = sys.stdin.fileno()
 
-#======================== PRINTARE GRAF GENERAT ====================
-def write_graph_matrix_to_file(n, graph, terminals):
-    filename = f"output_{n}_{len(terminals)}.txt"
+# PREPARE: ?
 
-    matrix = [[INF] * n for _ in range(n)]
+# BEGIN: read data
+try:
+    N, G, T = read_graph(open(ifname, "r"))
+except FileNotFoundError:
+    print(f"\033[91m'{ifname}' is not a valid file!\033[0m")
+    exit(2)
 
-    for i in range(n):
-        matrix[i][i] = 0
+# SOLVE: find Steiner tree and calculate time taken in milliseconds
+start = time.perf_counter_ns()
+cost, edges = steiner_tree(N, G, T)
+end = (time.perf_counter_ns() - start) / 1e6
 
-    for u in graph:
-        for v, w in graph[u]:
-            matrix[u][v] = min(matrix[u][v], w)
-
-    with open(filename, "w") as f:
-        f.write(f"Matricea de adiacenta ({n} x {n})\n")
-        f.write(f"Terminale: {terminals}\n\n")
-
-        for i in range(n):
-            for j in range(n):
-                if matrix[i][j] == INF:
-                    f.write("INF ")
-                else:
-                    f.write(f"{matrix[i][j]} ")
-            f.write("\n")
-
-    print(f"Matricea a fost scrisa in fisierul: {filename}")
-
-
-
-# ================== INPUT + MAIN ==================
-def read_input():
-    n, k = map(int, input().split())
-    terminals = list(map(int, input().split()))
-    return n, terminals
-
-
-if __name__ == "__main__":
-    n, terminals = read_input()
-    graph = generate_random_connected_graph(n)
-
-    write_graph_matrix_to_file(n, graph, terminals)
-
-    start = time.perf_counter()
-
-    cost, edges = steiner_tree(n, graph, terminals)
-
-    end = time.perf_counter()
-
-    print("Timp executie (fara IO):", end - start, "secunde")
-
-    print("Numar noduri:", n)
-    print("Numar terminale:" len(terminals))
-    print("Terminale:", terminals)
-    print("Cost minim Steiner:", cost)
-    print("Numar muchii arbore:", len(edges))
+# RESULT: print data to console and write total weight to file
+print("DYNAMIC")
+if cost is None:
+    print("No Steiner tree found.")
+else:
+    try:
+        open(ofname, "w").write(f"{cost}")
+    except FileNotFoundError:
+        print(f"\033[91m'{ofname}' is not a valid file!\033[0m")
+    print(f"Minimum weight: {cost}")
+    for u, v in edges:
+        for tri in G:
+            if u == tri[0] and v == tri[1]: w = tri[2]
+        print(f"  {u} - {v} (weight {w})")
+print("Time elapsed (DP): %.4f ms\n" % end)

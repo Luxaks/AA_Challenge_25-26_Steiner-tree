@@ -4,8 +4,6 @@ from collections import defaultdict, deque
 import sys
 import time
 
-# read data from file
-# TODO: streamline file I/O via checker
 def read_graph(file):
     G = []
     T = []
@@ -83,7 +81,8 @@ def backtrack(idx, chosen, cur_weight):
 
 # ENTRY: check args
 if len(sys.argv) != 3:
-    print("Usage:\n\tpython3 backtrack [-t | <input_filename>] <output_filename>\n\nFlag:\n\t-t\tRead data from terminal")
+    print("\033[93mUsage:\n\tpython3 backtrack.py [-t | <input_filename>] <output_filename>")
+    print("\nFlag:\n\t-t\tRead data from terminal\033[0m")
     exit(1)
 ifname = sys.argv[1]
 ofname = sys.argv[2]
@@ -98,13 +97,13 @@ best_solution = None
 try:
     N, G, T = read_graph(open(ifname, "r"))
 except FileNotFoundError:
-    print(f"'{ifname}' is not a valid file!")
+    print(f"\033[91m'{ifname}' is not a valid file!\033[0m")
     exit(2)
 
 # SOLVE: find Steiner tree and calculate time taken in milliseconds
-start = time.time()
+start = time.perf_counter_ns()
 backtrack(0, [], 0)
-end_bt = (time.time() - start) * 1000
+end = (time.perf_counter_ns() - start) / 1e6
 
 # RESULT: print data to console and write total weight to file
 print("BACKTRACK")
@@ -114,8 +113,8 @@ else:
     try:
         open(ofname, "w").write(f"{best_weight}")
     except FileNotFoundError:
-        print(f"'{ofname}' is not a valid file!")
+        print(f"\033[91m'{ofname}' is not a valid file!\033[0m")
     print(f"Minimum weight: {best_weight}")
     for u, v, w in best_solution:
         print(f"  {u} - {v} (weight {w})")
-print("Time elapsed (BT): %.4f ms\n" % end_bt)
+print("Time elapsed (BT): %.4f ms\n" % end)

@@ -18,46 +18,69 @@ cp "$SRC/$EXEC_DPF" $EXEC_DPF
 
 # SMALL TESTS
 echo -n > $RES_SML
+echo "Testing small."
 for INFILE in "$TESTS_SML"*; do
     [ -f "$INFILE" ] || continue
 
     STRIP="${INFILE%.*}"
+    NUMB="${STRIP#$TESTS_SML}"
     OUTFILE="output/${STRIP#input/}"
 
-    echo -e "TEST ${STRIP#$TESTS_SML}.\n" >> $RES_SML
+    echo -e "TEST $NUMB.\n" >> $RES_SML
+    echo -n "$NUMB: "
 
+    echo -n  "1... "
     python3 $EXEC_BKT $INFILE "$OUTFILE.bkt.out" >> $RES_SML
+    echo -n "2... "
     python3 $EXEC_GDY $INFILE "$OUTFILE.gdy.out" >> $RES_SML
-    # python3 $EXEC_DPF $INFILE "$OUTFILE.dpf.out"
+    echo "3... "
+    python3 $EXEC_DPF $INFILE "$OUTFILE.dpf.out" >> $RES_SML
+
 done
+echo -e "Finished small tests.\n"
 
 # MEDIUM TESTS
 echo -n > $RES_MED
+echo "Testing medium."
 for INFILE in "$TESTS_MED"*; do
     [ -f "$INFILE" ] || continue
 
     STRIP="${INFILE%.*}"
+    NUMB="${STRIP#$TESTS_MED}"
     OUTFILE="output/${STRIP#input/}"
 
-    echo -e "TEST ${STRIP#$TESTS_MED}.\n" >> $RES_MED
+    echo -e "TEST $NUMB.\n" >> $RES_MED
+    echo -n "$NUMB: "
 
+    echo -n "1... "
     python3 $EXEC_BKT $INFILE "$OUTFILE.bkt.out" >> $RES_MED
+    echo -n "2... "
     python3 $EXEC_GDY $INFILE "$OUTFILE.gdy.out" >> $RES_MED
+    echo "3... "
     python3 $EXEC_DPF $INFILE "$OUTFILE.dpf.out" >> $RES_MED
+
 done
+echo -e "Finished medium tests.\n"
 
 # LARGE TESTS
 echo -n > $RES_LRG
+echo "Testing large."
 for INFILE in "$TESTS_LRG"*; do
     [ -f "$INFILE" ] || continue
 
     STRIP="${INFILE%.*}"
+    NUMB="${STRIP#$TESTS_LRG}"
     OUTFILE="output/${STRIP#input/}"
 
-    echo -e "TEST ${STRIP#$TESTS_LRG}.\n" >> $RES_LRG
+    echo -e "TEST $NUMB.\n" >> $RES_LRG
+    echo -n "$NUMB: "
 
     # at this point, BT would be far too slow
+    echo -n "1... "
     # python3 $EXEC_BKT $INFILE "$OUTFILE.bkt.out" >> $RES_LRG
+    echo -n "2... "
     python3 $EXEC_GDY $INFILE "$OUTFILE.gdy.out" >> $RES_LRG
+    echo "3... "
     python3 $EXEC_DPF $INFILE "$OUTFILE.dpf.out" >> $RES_LRG
 done
+echo -e "Finished large tests.\n"
