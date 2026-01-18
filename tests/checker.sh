@@ -61,5 +61,3 @@ for INFILE in "$TESTS_LRG"*; do
     python3 $EXEC_GDY $INFILE "$OUTFILE.gdy.out" >> $RES_LRG
     python3 $EXEC_DPF $INFILE "$OUTFILE.dpf.out" >> $RES_LRG
 done
-
-rm *.py
