@@ -1,7 +1,0 @@
-Matricea a fost scrisa in fisierul: output_20_4.txt
-Timp executie (fara IO): 0.0003543579987308476 secunde
-Numar noduri: 20
-Numar terminale: 4
-Terminale: [0, 5, 11, 19]
-Cost minim Steiner: 12
-Numar muchii arbore: 4

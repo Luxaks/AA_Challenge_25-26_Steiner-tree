@@ -1,7 +1,0 @@
-Matricea a fost scrisa in fisierul: output_500_8.txt
-Timp executie (fara IO): 0.20599907900032122 secunde
-Numar noduri: 500
-Numar terminale: 8
-Terminale: [0, 71, 142, 213, 284, 355, 426, 499]
-Cost minim Steiner: 41
-Numar muchii arbore: 19
