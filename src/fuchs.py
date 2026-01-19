@@ -1,5 +1,5 @@
 # DP approximation of Steiner tree, replacing BT with a Dijkstra-based
-# algorithm via the Fuchs improved Dreyer-Wagner method (1971, 2006).
+# algorithm via the Fuchs improved Dreyfus-Wagner method (1971, 2006).
 
 import heapq
 import random
@@ -194,4 +194,4 @@ else:
         for tri in G:
             if u == tri[0] and v == tri[1]: w = tri[2]
         print(f"  {u} - {v} (weight {w})")
-print("Time elapsed (DP): %.4f ms\n" % end)
+print("Time elapsed: %.4f ms (%.2f s)\n" % (end, end / 1e3))

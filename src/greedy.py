@@ -180,4 +180,4 @@ else:
     print(f"Minimum weight: {best_weight}")
     for u, v, w in sol_edges:
         print(f"  {u} - {v} (weight {w})")
-print("Time elapsed (Greedy): %.4f ms\n" % end)
+print("Time elapsed: %.4f ms (%.2f s)\n" % (end, end / 1e3))

@@ -1,7 +1,11 @@
 .vscode/*
 
+*.zip
+
 src/*.in
 src/*.out
 
 tests/*.py
 tests/output/*
+
+docs/*.pdf

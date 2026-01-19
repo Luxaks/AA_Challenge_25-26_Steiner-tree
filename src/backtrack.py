@@ -117,4 +117,4 @@ else:
     print(f"Minimum weight: {best_weight}")
     for u, v, w in best_solution:
         print(f"  {u} - {v} (weight {w})")
-print("Time elapsed (BT): %.4f ms\n" % end)
+print("Time elapsed: %.4f ms (%.2f s)\n" % (end, end / 1e3))
