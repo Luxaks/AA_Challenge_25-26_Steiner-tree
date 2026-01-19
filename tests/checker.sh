@@ -92,7 +92,7 @@ for INFILE in "$TESTS_LRG"*; do
     echo -e "TEST $NUMB.\n" >> $RES_LRG
     echo -n "$NUMB: "
 
-    echo "1... "
+    echo -n "1... "
     python3 $EXEC_DPF $INFILE "$OUTFILE.dpf.out" >> $RES_LRG
     echo "2... "
     python3 $EXEC_GDY $INFILE "$OUTFILE.gdy.out" >> $RES_LRG
