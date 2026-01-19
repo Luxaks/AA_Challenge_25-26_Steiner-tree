@@ -115,7 +115,7 @@ while true; do
     esac
 done
 while true; do
-    read -r answer; answer=${answer^^} # toUpper
+    read -r answer; answer=${answer^^}
     case "$answer" in
         Y)  echo -n "Extreme tests incoming! "
             break;;
