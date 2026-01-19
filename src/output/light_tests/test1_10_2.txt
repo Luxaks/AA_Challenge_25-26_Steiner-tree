@@ -1,7 +1,0 @@
-Matricea a fost scrisa in fisierul: output_10_2.txt
-Timp executie (fara IO): 5.731199780711904e-05 secunde
-Numar noduri: 10
-Numar terminale: 2
-Terminale: [0, 9]
-Cost minim Steiner: 7
-Numar muchii arbore: 2

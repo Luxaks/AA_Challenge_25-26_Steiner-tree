@@ -1,7 +1,0 @@
-Matricea a fost scrisa in fisierul: output_450_7.txt
-Timp executie (fara IO): 0.08197314999779337 secunde
-Numar noduri: 450
-Numar terminale: 7
-Terminale: [10, 64, 128, 192, 256, 320, 449]
-Cost minim Steiner: 45
-Numar muchii arbore: 25
