@@ -1,7 +1,0 @@
-Matricea a fost scrisa in fisierul: output_80_7.txt
-Timp executie (fara IO): 0.010852518000319833 secunde
-Numar noduri: 80
-Numar terminale: 7
-Terminale: [5, 13, 21, 34, 47, 62, 79]
-Cost minim Steiner: 35
-Numar muchii arbore: 14
