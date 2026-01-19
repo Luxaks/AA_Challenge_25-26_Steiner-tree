@@ -1,0 +1,138 @@
+# Credits, sources, references, citations
+
+repo:
+  type: Repository
+  title: "AA Challenge 2025-2026: Steiner Tree"
+  author: ["Ciucă, Lucas", "Tănasă, Cosmin-Andrei"]
+  url: https://github.com/Luxaks/AA_Challenge_25-26_Steiner-tree/
+
+overview:
+  type: Reference
+  genre: Lecture notes
+  title: Steiner Trees
+  author: Gilbert, Seth
+  organization: Department of Computer Science, National University of Singapore (Optimization Algorithms, Lecture 3)
+  date: 2015-08-25
+  url: https://www.comp.nus.edu.sg/~gilbert/CS4234/2015/lectures/03.Steiner.pdf
+
+st_general_method:
+  type: Reference
+  title: Steiner Tree Approximation
+  organization: University Of Toronto, Canada (Algorithms and Data Structures, Fall 2013)
+  date: 2013
+  url: https://www.eecg.toronto.edu/~ece1762/hw/steiner.pdf
+
+st_info:
+  type: Article
+  title: Solving Steiner Trees – Recent Advances, Challenges and Perspectives
+  author: Ljubić, Ivana
+  organization: Business School of Paris, France
+  url: https://rishikeshavan.github.io/prof-ivana-site/docs/publications/NetworksSI.pdf
+
+def_image:
+  type: Blog
+  title: Steiner Tree in Graph — Explained (Image)
+  author: Ramasamy, Karthikeyan
+  date: 2019-09-15
+  url: https://medium.com/@rkarthik3cse/steiner-tree-in-graph-explained-8eb363786599
+
+poly_image:
+  type: Blog
+  genre: Encyclopedia
+  title: Steiner tree problem (Image)
+  author: Wikipedia
+  url: https://en.wikipedia.org/wiki/Steiner_tree_problem
+  
+karp:
+  type: Article
+  title: Reducibility Among Combinatorial Problems
+  author: Karp, Richard
+  organization: University of California at Berkeley, CA, USA
+  date: 1972
+  url: https://cgi.di.uoa.gr/~sgk/teaching/grad/handouts/karp.pdf
+  
+exact_algorithms:
+  type: Thesis
+  title: Exact Algorithms for the Steiner Tree Problem
+  author: Wang, Xinhui
+  organization: University of Twente, Netherlands
+  date: 2008-06-25
+  url: https://ris.utwente.nl/ws/files/6039875/thesis_Wang
+
+heuristics:
+  type: Article
+  title: Two Heuristics for the Euclidean Steiner Tree Problem
+  author: ["Dreyer, Derek", "Overton, Michael"]
+  organization: School of Computer Science, Carnegie Mellon University, Pittsburgh, PA, USA
+  date: 2002-09-30
+  url: https://people.mpi-sws.org/~dreyer/papers/steiner/steiner.pdf
+
+dijkstra:
+  type: Reference
+  genre: Lecture notes
+  title: Dijkstra’s Algorithm (for shortest paths) (Introduction to Algorithms and Data Structures, Lecture 16)
+  author: Cryan, Mary
+  organization: School of Informatics, University of Edinburgh, Scotland, UK
+  url: https://opencourse.inf.ed.ac.uk/sites/default/files/2025-01/iads_16_dijkstra_0.pdf
+
+djk_code:
+  type: Blog
+  title: Dijkstra Algorithm
+  author: ["Lauhny, Bimalkant", "Kogler, Jakob"]
+  organization: Algorithms for Competitive Programming
+  url: https://cp-algorithms.com/graph/dijkstra.html
+
+apx_overview:
+  type: Reference
+  title: The Steiner tree problem
+  author: Faloutsos, Michalis
+  url: https://www.cs.ucr.edu/~michalis/COURSES/240-08/steiner.html
+
+apx_algo:
+  type: Article
+  title: An Efficient Approximation Algorithm for the Steiner Tree Problem
+  author: Chen, Chi-Yeh
+  organization: Department of Computer Science and Information Engineering, National Cheng Kung University, Taiwan
+  url: https://dl.acm.org/doi/epdf/10.1145/3322645.3322649
+
+tkmy_method:
+  type: Article
+  title: An Approximate Solution for the Steiner Problem in Graphs
+  author: ["Takahashi, Hiromitsu", "Matsuyama, Akira"]
+  organization: Mathematica Japonica
+  date: 1979-04-19
+  url: https://cs.haifa.ac.il/~golumbic/courses/seminar-2010approx/takahashi80.PDF
+  
+dw_method:
+  type: Article
+  title: The Steiner Problem in Graphs
+  author: ["Dreyfus, Stuart E.", "Wagner, R. A."]
+  organization: Department of Industrial Engineering and Operations Research, University of California, Berkeley, CA; Computer Science Department, Cornell University, Ithaca, NY, USA
+  date: 1971-05-11
+  url: https://web.vu.lt/mif/s.jukna/tropical/Dreyfus-Wagner.pdf
+  
+fuchs:
+  type: Article
+  title: Dynamic Programming for Minimum Steiner Trees
+  author: ["Fuchs, Bernard", "Kern, Walter"]
+  organization: Theory of Computing Systems
+  date: 2006-01-23
+  url: https://blogs.asarkar.com/assets/docs/algorithms/Dynamic%20Programming%20for%20Minimum%20Steiner%20Trees.pdf
+
+dp_code:
+  type: Repository
+  title: Code Library — Graph Theory. Steiner Tree Problem
+  author: Shohag, Shahjalal 
+  url: https://github.com/ShahjalalShohag/code-library/blob/main/Graph%20Theory/Steiner%20Tree%20Problem.cpp
+
+graph_visual:
+  type: Reference
+  genre: Visual tool
+  title: Graph Editor
+  url: https://csacademy.com/app/graph_editor/
+  
+st_visual:
+  type: Reference
+  genre: Visual tool
+  title: Steiner Tree - VisuAlgo
+  url: https://visualgo.net/en/steinertree

@@ -1,2 +1,0 @@
-Concluzia este una buna.
-

@@ -1,2 +1,0 @@
-Cel mai talent intro.
-
