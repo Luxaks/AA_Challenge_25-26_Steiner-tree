@@ -3,7 +3,7 @@ This directory contains the four Python code files, as follows:
 * `generator.py` — Generate (highly) connected graphs with a given vertex count, and a list of terminals from among these.
 
 Usage: 
-```bash
+```
 python3 generator.py <n> <t>
 ```
 
@@ -14,7 +14,7 @@ python3 generator.py <n> <t>
 * `greedy.py` — A heuristic algorithm, based on the greedy technique, implementing the Takahashi-Matsuyama method.
 
 Usage:
-```bash
+```
 python3 <solver> [-t | <input_file>] <output_file>
 ```
 
