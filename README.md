@@ -4,6 +4,9 @@ Analysis and solutions for the Steiner tree problem.
 ## Authors
 Ciucă Lucas & Tănasă Cosmin-Andrei (324 CC, ACS year II)
 
+## Repository
+The GitHub repository with all of the source files can be found [here](https://github.com/Luxaks/AA_Challenge_25-26_Steiner-tree/).
+
 ## Purpose
 This repository serves to contain the Python source code and testing files for this project, as well as the full documentation Typst sources.
 
