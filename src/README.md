@@ -1,6 +1,8 @@
 # Source code
 This directory contains the four Python code files, as follows:
-* `generator.py` — Generate (highly) connected graphs with a given vertex count, and a list of terminals from among these. Usage: 
+* `generator.py` — Generate (highly) connected graphs with a given vertex count, and a list of terminals from among these.
+
+Usage: 
 ```bash
 python3 generator.py <n> <t>
 ```
