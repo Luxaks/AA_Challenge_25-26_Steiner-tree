@@ -7,7 +7,7 @@
 
 Pentru ajutor la alegerea datelor de intrare, au fost folosite 2 metode:
 - generarea vizuală a grafurilor cu unelte online@graph_visual @st_visual
-- generarea de grafuri aleatorii folosind programul _`generator.py`_, care primește $n$ și $k$ și generează graful și lista de terminale cu _`random.randint`_, asigurând însă conexivitatea.
+- generarea de grafuri aleatorii folosind programul _`generator.py`_, care primește $n$ și $k$ și generează graful și lista de terminale cu _`random.randint`_, asigurând însă conexitatea.
 
 A fost adăugată în plus opțiunea de a citi datele de intrare și de la tastatură. Acest lucru poate fi folosit și pentru a trece output-ul lui _`generator`_ direct în algoritmul de rezolvare. Ieșirea se face în două metode:
 - costul total obținut este scris într-un fișier specificat (deși această abordare este redundantă)
